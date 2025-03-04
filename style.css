@@ -18,6 +18,17 @@ body {
     display: flex;
     gap: 10px;
 }
+@media (max-width: 600px) { /* Para pantallas de 600px de ancho o menos */
+    .input-group {
+      flex-direction: column; /* Cambia la dirección a columna */
+    }
+  
+    .input-group label {
+      display: flex; /* Elimina la distribución de espacio */
+      justify-content: space-around;
+      width: 100%; /* Ocupa todo el ancho */
+    }
+  }
 
 input, button {
     padding: 10px;
