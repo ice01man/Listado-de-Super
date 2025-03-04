@@ -28,7 +28,11 @@ function addItem() {
         total: 0
     };
 
-    if (item.price == null){ item.price = 0}
+    if ( item.price === "" || isNaN(item.price)) {    
+        item.price = 0
+      }
+    //if (item.price == null || item.price == '' ){ item.price = 0}
+    console.log(item.price)
     item.total = item.price * item.quantity;
     items.push(item);
     total += item.total;
@@ -49,8 +53,8 @@ function updateList() {
         li.className = 'item';
         li.innerHTML = `
             <span>${item.name}</span>
-            <span><input type="number" value="${item.quantity}"> x $ <input type="number" id="${item.id}" value="${item.price.toFixed(2)}"></span>
-            <span>$${item.total.toFixed(2)}</span>
+            <span><input type="number" value="${item.quantity}"> x $ <input type="number" id="${item.id}" value="${item.price}"></span>
+            <span>$${item.total}</span>
             <button onclick="removeItem(${item.id})" class="clear">🗑️</button>
         `;
         list.appendChild(li);
