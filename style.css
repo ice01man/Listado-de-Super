@@ -28,6 +28,14 @@ body {
       justify-content: space-around;
       width: 100%; /* Ocupa todo el ancho */
     }
+    #itemsList span{
+        width: 50%; 
+        display: flex;  
+        justify-content: flex-start
+    }
+    #itemsList input{
+
+    }
   }
 
 input, button {
@@ -54,18 +62,20 @@ button:hover {
 }
 .item span:nth-child(1){
     width: 300px;
+    
 }
 
 .item input:nth-child(1){
-    width: 80px;    
+    width: 40px;    
     align-self: flex-start;
     align-items: flex-start;
 }
 .item input:nth-child(2){
-    width: 100px;
+    width: 50px;
 }
 .item span:nth-child(3){
-    width: 40px;
+    width: 100px;
+
 }
 .item {
     display: flex;

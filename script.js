@@ -31,8 +31,7 @@ function addItem() {
     if ( item.price === "" || isNaN(item.price)) {    
         item.price = 0
       }
-    //if (item.price == null || item.price == '' ){ item.price = 0}
-    console.log(item.price)
+    
     item.total = item.price * item.quantity;
     items.push(item);
     total += item.total;
@@ -48,6 +47,8 @@ function updateList() {
     const list = document.getElementById('itemsList');
     list.innerHTML = '';
 
+    console.log(items)
+
     items.forEach((item) => {
         const li = document.createElement('li');
         li.className = 'item';
@@ -62,7 +63,8 @@ function updateList() {
     const listainput = document.getElementsByClassName('item');
     for (let i = 0; i < listainput.length; i++) {
         const input = listainput[i];
-        input.addEventListener('input', function(e) {
+        /*input.addEventListener('input', function(e) {*/
+        input.addEventListener('change', function(e) { 
            /* console.log(`El valor actual es: ${e.target.value}`);*/
            
             let xId = this.children[1].children[1].id
@@ -71,18 +73,36 @@ function updateList() {
             let xPrice= this.children[1].children[1].value
             let xTotal = xCant * xPrice 
             this.children[2].innerHTML = xTotal
-            /* item.total = item.price * item.quantity;
-            items.push(item);
-            total += item.total; */
-            const item = {
-                id : xId,
-                name: xName,
-                price: xPrice,
-                quantity: xCant,
-                total: xTotal
-            };
-            //console.log(item)
-            localStorage.setItem('shoppingItems', JSON.stringify(item));
+           
+            // Obtener todos los items del localStorage
+            let items = JSON.parse(localStorage.getItem('shoppingItems')) || [] ; 
+
+            // Buscar el item a actualizar
+            let itemIndex = items.findIndex(item => item.id === xId);
+
+            if (itemIndex !== -1) { 
+            // Actualizar el item en el array
+                items[itemIndex] = {
+                    id: xId,
+                    name: xName,
+                    price: xPrice,
+                    quantity: xCant,
+                    total: xTotal
+                };
+            } else {
+            // Si el item no existe, agregarlo al array
+                items.push({
+                    id: xId,
+                    name: xName,
+                    price: xPrice,
+                    quantity: xCant,
+                    total: xTotal
+                });
+            }
+
+            // Guardar el array actualizado en localStorage
+           // localStorage.setItem('shoppingItems', JSON.stringify(items));
+           saveToLocalStorage()
         });
 
     }
