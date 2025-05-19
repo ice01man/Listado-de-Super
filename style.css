@@ -18,7 +18,8 @@ body {
     display: flex;
     gap: 10px;
 }
-@media (max-width: 600px) { /* Para pantallas de 600px de ancho o menos */
+
+@media (max-width: 630px) { /* Para pantallas de 600px de ancho o menos */
     .input-group {
       flex-direction: column; /* Cambia la dirección a columna */
     }
@@ -29,13 +30,11 @@ body {
       width: 100%; /* Ocupa todo el ancho */
     }
     #itemsList span{
-        width: 50%; 
+        width: 40%; 
         display: flex;  
-        justify-content: flex-start
+       /* justify-content: flex-start */
     }
-    #itemsList input{
 
-    }
   }
 
 input, button {
@@ -43,6 +42,7 @@ input, button {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
 
 button {
     background: #4CAF50;
@@ -71,7 +71,7 @@ button:hover {
     align-items: flex-start;
 }
 .item input:nth-child(2){
-    width: 50px;
+    width: 70px;
 }
 .item span:nth-child(3){
     width: 100px;
@@ -85,6 +85,10 @@ button:hover {
     margin: 5px 0;
     background: #f8f8f8;
     border-radius: 5px;
+}
+.item span:nth-child(2) {
+    display: flex;
+    padding: 2px;
 }
 
 
